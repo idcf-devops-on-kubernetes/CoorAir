@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sales
+  labels:
+    app: sales
+spec:
+  strategy:
+    type: RollingUpdate
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sales
+  template:
+    metadata:
+      labels:
+        app: sales
+    spec:
+      volumes:
+        - name: app-config
+          configMap:
+            name: 'sales-config'
+      containers:
+        - name: app
+          image: ccr.ccs.tencentyun.com/idcf-k8s-devops/sc-sales:v1
+          ports:
+            - name: http
+              containerPort: 8080
+          env:
+            - name: SPRING_CONFIG_LOCATION
+              value: /app/
+          volumeMounts:
+            - name: app-config
+              mountPath: /app/application.yml
+              subPath: application-k8s.yml
+          resources:
+            requests:
+              memory: 256Mi
+              cpu: 200m
+            limits:
+              memory: 768Mi
+              cpu: 500m
+          readinessProbe:
+            httpGet:
+              path: /actuator/info
+              port: 8081
+              scheme: HTTP
+            initialDelaySeconds: 10
+            periodSeconds: 3
+          livenessProbe:
+            httpGet:
+              path: /actuator/info
+              port: 8081
+              scheme: HTTP
+            initialDelaySeconds: 60
+            periodSeconds: 10

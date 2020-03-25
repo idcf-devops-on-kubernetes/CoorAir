@@ -1,0 +1,87 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: presentation
+  labels:
+    app: presentation
+spec:
+  strategy:
+    type: RollingUpdate
+  replicas: 2
+  selector:
+    matchLabels:
+      app: presentation
+  template:
+    metadata:
+      labels:
+        app: presentation
+    spec:
+      volumes:
+        - name: app-config
+          configMap:
+            name: 'presentation-config'
+      containers:
+        - name: app
+          image: ccr.ccs.tencentyun.com/idcf-k8s-devops/sc-presentation:v1
+          ports:
+            - name: http
+              containerPort: 8080
+          env:
+            - name: SPRING_CONFIG_LOCATION
+              value: /app/
+          volumeMounts:
+            - name: app-config
+              mountPath: /app/application.yml
+              subPath: application-k8s.yml
+          resources:
+            requests:
+              memory: 256Mi
+              cpu: 200m
+            limits:
+              memory: 768Mi
+              cpu: 500m
+          readinessProbe:
+            httpGet:
+              path: /actuator/info
+              port: 8081
+              scheme: HTTP
+            initialDelaySeconds: 10
+            periodSeconds: 3
+          livenessProbe:
+            httpGet:
+              path: /actuator/info
+              port: 8081
+              scheme: HTTP
+            initialDelaySeconds: 60
+            periodSeconds: 10
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: presentation-public-svc
+spec:
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  type: LoadBalancer
+  selector:
+    app: presentation
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: presentation-management-svc
+spec:
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8081
+  type: ClusterIP
+  selector:
+    app: presentation
+

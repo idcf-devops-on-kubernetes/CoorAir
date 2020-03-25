@@ -1,0 +1,71 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: eueraka
+  labels:
+    app: eueraka
+spec:
+  strategy:
+    type: RollingUpdate
+  replicas: 1
+  selector:
+    matchLabels:
+      app: eueraka
+  template:
+    metadata:
+      labels:
+        app: eueraka
+    spec:
+      volumes:
+        - name: app-config
+          configMap:
+            name: 'eureka-config'
+      containers:
+        - name: app
+          image: ccr.ccs.tencentyun.com/idcf-k8s-devops/sc-eureka:v1
+          ports:
+            - name: http
+              containerPort: 8080
+          env:
+            - name: SPRING_CONFIG_LOCATION
+              value: /app/
+          volumeMounts:
+            - name: app-config
+              mountPath: /app/application.yml
+              subPath: application-k8s.yml
+          resources:
+            requests:
+              memory: 256Mi
+              cpu: 200m
+            limits:
+              memory: 768Mi
+              cpu: 500m
+          readinessProbe:
+            httpGet:
+              path: /actuator/info
+              port: 8081
+              scheme: HTTP
+            initialDelaySeconds: 10
+            periodSeconds: 3
+          livenessProbe:
+            httpGet:
+              path: /actuator/info
+              port: 8081
+              scheme: HTTP
+            initialDelaySeconds: 60
+            periodSeconds: 10
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: eureka-svc
+spec:
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  type: ClusterIP
+  selector:
+    app: eueraka

@@ -2,13 +2,11 @@ spring:
   application:
     name: presentation
   zipkin:
-    base-url: http://localhost:9411/
+    base-url: http://zipkin-svc/
   sleuth:
     sampler:
       probability: 1.0
 
-server:
-  port: 6080
 
 eureka:
   instance:
@@ -16,11 +14,7 @@ eureka:
     prefer-ip-address: true
   client:
     service-url:
-      default-zone: http://localhost:8761/eureka/
-
-# zuul:
-#   ribbon:
-#     listOfServers: localhost:6000
+      default-zone: http://eureka-svc/eureka/
 
 
 hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 3000
@@ -33,16 +27,13 @@ hystrix:
       queueSizeRejectionThreshold: 200
 
 
+server:
+  port: 8080
 
 management:
   server:
-    port: 6081
+    port: 8081
   endpoints:
     web:
       exposure:
         include: '*'
-
-
-logging:
-  level:
-    org.springframework: DEBUG

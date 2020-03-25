@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zipkin
+  labels:
+    app: zipkin
+spec:
+  strategy:
+    type: RollingUpdate
+  replicas: 1
+  selector:
+    matchLabels:
+      app: zipkin
+  template:
+    metadata:
+      labels:
+        app: zipkin
+    spec:
+      containers:
+        - name: app
+          image: ccr.ccs.tencentyun.com/idcf-k8s-devops/sc-zipkin:v1
+          ports:
+            - name: http
+              containerPort: 9441
+          resources:
+            requests:
+              memory: 256Mi
+              cpu: 200m
+            limits:
+              memory: 768Mi
+              cpu: 500m
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 9441
+              scheme: HTTP
+            initialDelaySeconds: 10
+            periodSeconds: 3
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 9441
+              scheme: HTTP
+            initialDelaySeconds: 60
+            periodSeconds: 10
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: zipkin-svc
+spec:
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 9441
+  type: ClusterIP
+  selector:
+    app: zipkin

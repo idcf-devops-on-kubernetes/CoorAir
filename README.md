@@ -1,44 +1,40 @@
-# ËµÃ÷
-±¾ÏîÄ¿ÑİÊ¾ÁËÔÚ±¾µØÔËĞĞ»ùÓÚSpring Boot/Spring Cloud¼Ü¹¹¿ª·¢µÄÎ¢·şÎñÓ¦ÓÃ£¬°üº¬·şÎñ×¢²á¡¢·şÎñ·¢ÏÖ¡¢·şÎñÍø¹Ø¡¢Á´Â·¸ú×Ù¡¢¶ÏÂ·Æ÷µÈ»ù´¡¹¦ÄÜ¡£Spring BootÊ¹ÓÃRed Hat Runtimes Spring Boot 2.1.6£¬Spring CloudÊ¹ÓÃGreenwich.SR5£¬¿ÉÆ½»¬ÔÚ±¾µØ»òRed Hat OpenShiftÉÏ½øĞĞ²¿Êğ£¬Î´À´£¬Ò²¿ÉÊ¹ÓÃRed Hat OpenShift Service Mesh¶Ô±¾ÏîÄ¿µÄSpring Cloud½øĞĞÏàÓ¦µÄÌæ´ú¡£
 
-# Ó¦ÓÃËµÃ÷
 
-±¾Ó¦ÓÃÄ£Äâ²éÑ¯º½°à±¨¼Û£¬ÓÉÒÔÏÂÄ£¿é×é³É
+# åº”ç”¨è¯´æ˜
 
-````
-Airports                          »ú³¡²éÑ¯·şÎñ
-Eureka                            Î¢·şÎñ×¢²á
-Flights                           º½°à²éÑ¯·şÎñ
-Presentation                      Ó¦ÓÃÇ°¶Ë
-Sales                             Æ±¼Û²éÑ¯·şÎñ
-Zuul                              Î¢·şÎñÍø¹Ø
-Zipkin                            Î¢·şÎñµ÷ÓÃ×·×Ù
-````
-
-×ñÕÕÎ¢·şÎñÓ¦ÓÃµÄÍ¨ÓÃÄ£Ê½Éè¼Æ£¬Ç°¶ËÍ¨¹ıÎ¢·şÎñÍø¹ØZuul¶Ôºó¶ËÎ¢·şÎñAirports¡¢Flights¡¢Sales½øĞĞµ÷ÓÃ£¬½«º½°àĞÅÏ¢³ÊÏÖ¸øÓÃ»§¡£ËùÓĞÎ¢·şÎñ¾ù×¢²áµ½Eureka£¬ºó¶ËÎ¢·şÎñÖ®¼äµÄµ÷ÓÃ£¬ÔòÊÇÖ±½Óµ÷ÓÃµÄ·½Ê½£¬±ÈÈçFlights¶ÔAirportsµÄµ÷ÓÃ¡£·şÎñµ÷ÓÃµÄÁ´Â·×·×ÙĞÅÏ¢·¢ËÍµ½Zipkin£¬¿ÉÍ¨¹ı²éÑ¯½çÃæ½øĞĞ¹Û¿´¡£
-
-# ±¾µØ±àÒë¼°ÔËĞĞ
+æœ¬åº”ç”¨æ¨¡æ‹ŸæŸ¥è¯¢èˆªç­æŠ¥ä»·ï¼Œç”±ä»¥ä¸‹æ¨¡å—ç»„æˆ
 
 ````
-git clone https://github.com/mransonwang/LambdaAir.git
-cd LambdaAir
+Airports                          æœºåœºæŸ¥è¯¢æœåŠ¡
+Eureka                            å¾®æœåŠ¡æ³¨å†Œ
+Flights                           èˆªç­æŸ¥è¯¢æœåŠ¡
+Presentation                      åº”ç”¨å‰ç«¯
+Sales                             ç¥¨ä»·æŸ¥è¯¢æœåŠ¡
+Zuul                              å¾®æœåŠ¡ç½‘å…³
+Zipkin                            å¾®æœåŠ¡è°ƒç”¨è¿½è¸ª
 ````
 
-ÓÉÓÚÏîÄ¿ÎÄ¼ş½Ï´ó£¬Ò²¿ÉÒÔÍ¨¹ı [LambdaAir on Spring Boot](https://github.com/mransonwang/LambdaAir/archive/master.zip) Ö±½ÓÏÂÔØ´ò°üÎÄ¼ş£¨Ô¼70M£©²¢½âÑ¹µ½Ö¸¶¨Ä¿Â¼¡£
+éµç…§å¾®æœåŠ¡åº”ç”¨çš„é€šç”¨æ¨¡å¼è®¾è®¡ï¼Œå‰ç«¯é€šè¿‡å¾®æœåŠ¡ç½‘å…³Zuulå¯¹åç«¯å¾®æœåŠ¡Airportsã€Flightsã€Salesè¿›è¡Œè°ƒç”¨ï¼Œå°†èˆªç­ä¿¡æ¯å‘ˆç°ç»™ç”¨æˆ·ã€‚æ‰€æœ‰å¾®æœåŠ¡å‡æ³¨å†Œåˆ°Eurekaï¼Œåç«¯å¾®æœåŠ¡ä¹‹é—´çš„è°ƒç”¨ï¼Œåˆ™æ˜¯ç›´æ¥è°ƒç”¨çš„æ–¹å¼ï¼Œæ¯”å¦‚Flightså¯¹Airportsçš„è°ƒç”¨ã€‚æœåŠ¡è°ƒç”¨çš„é“¾è·¯è¿½è¸ªä¿¡æ¯å‘é€åˆ°Zipkinï¼Œå¯é€šè¿‡æŸ¥è¯¢ç•Œé¢è¿›è¡Œè§‚çœ‹ã€‚
+
+# æœ¬åœ°ç¼–è¯‘åŠè¿è¡Œ
 
 ````
-cd LambdaAir-master
+git clone https://github.com/idcf-devops-on-kubernetes/CoolAir.git
+cd CoolAir
 ````
 
-Ê¹ÓÃMaven½øĞĞ±àÒë´ò°ü
+
+````
+cd CoolAir-master
+````
+
+ä½¿ç”¨Mavenè¿›è¡Œç¼–è¯‘æ‰“åŒ…
 
 ````
 mvn package
 ````
 
-±àÒëÆÚ¼äĞèÒª´ÓÖĞÑëMaven¿âÏÂÔØÒ»ÏµÁĞÒÀÀµ¹¤¼ş£¬Èç¹ûÏÂÔØËÙ¶ÈÂı£¬Ò²¿ÉÒÔÍ¨¹ı [Repository for LambdaAir](https://pan.baidu.com/s/1k4GvQkoIgVi-WxeyVcD5zA) Ö±½ÓÏÂÔØ´ò°üÎÄ¼ş£¨Ô¼110M£¬ÌáÈ¡Âë2ua8£©²¢½âÑ¹µ½±¾µØMaven¿âÄ¿Â¼£¬È±Ê¡Î»ÓÚÓÃ»§Ö÷Ä¿Â¼ÏÂµÄ.m2\repository¡£
-
-ÔÚÒÔÏÂÄ¿Â¼Éú³ÉÁË¿ÉÔËĞĞµÄ.jarÎÄ¼ş
+åœ¨ä»¥ä¸‹ç›®å½•ç”Ÿæˆäº†å¯è¿è¡Œçš„.jaræ–‡ä»¶
 
 ````
 Airports\target\airports-1.0-SNAPSHOT.jar
@@ -49,9 +45,9 @@ Sales\target\sales-1.0-SNAPSHOT.jar
 Zuul\target\zuul-1.0.0-RELEASE.jar
 ````
 
-´ÓSpring Boot 2.0.0¿ªÊ¼£¬Zipkin²»ÔÙ×÷ÎªSpring Boot¿É±àÒëÏîÄ¿´æÔÚ£¬¹Ù·½ÍÆ¼ö´Ó [¹ÙÍø](https://zipkin.io) ÏÂÔØ´ò°üºÃµÄ.jarÎÄ¼şÖ±½ÓÔËĞĞ¡£ÔÚZipkinÄ¿Â¼ÖĞ£¬ÒÑ¾­×¼±¸ºÃzipkin.jarÎÄ¼ş¡£
+ä»Spring Boot 2.0.0å¼€å§‹ï¼ŒZipkinä¸å†ä½œä¸ºSpring Bootå¯ç¼–è¯‘é¡¹ç›®å­˜åœ¨ï¼Œå®˜æ–¹æ¨èä» [å®˜ç½‘](https://zipkin.io) ä¸‹è½½æ‰“åŒ…å¥½çš„.jaræ–‡ä»¶ç›´æ¥è¿è¡Œã€‚åœ¨Zipkinç›®å½•ä¸­ï¼Œå·²ç»å‡†å¤‡å¥½zipkin.jaræ–‡ä»¶ã€‚
 
-ĞèÒª´ò¿ªÆß¸öÃüÁîĞĞ´°¿ÚÔËĞĞËùÓĞµÄÎ¢·şÎñ£º
+éœ€è¦æ‰“å¼€ä¸ƒä¸ªå‘½ä»¤è¡Œçª—å£è¿è¡Œæ‰€æœ‰çš„å¾®æœåŠ¡ï¼š
 
 ````
 java -jar Eureka\target\eureka-1.0.0-RELEASE.jar
@@ -75,7 +71,7 @@ jar -jar Sales\target\sales-1.0-SNAPSHOT.jar
 jar -jar Zuul\target\zuul-1.0.0-RELEASE.jar
 ````
 
-¸÷Î¢·şÎñ¼àÌıµÄ¶Ë¿Ú·Ö±ğÈçÏÂ£º
+å„å¾®æœåŠ¡ç›‘å¬çš„ç«¯å£åˆ†åˆ«å¦‚ä¸‹ï¼š
 
 ````
 Airports                          6010
@@ -87,155 +83,19 @@ Zuul                              6000
 Zipkin                            9411
 ````
 
-# ·ÃÎÊÓ¦ÓÃ
+# è®¿é—®åº”ç”¨
 
-Í¨¹ı [http://localhost:6080](http://localhost:6080) ·ÃÎÊÓ¦ÓÃÇ°¶Ë£¬ÔÚÆğÊ¼µØÖ·ºÍÄ¿µÄµØÖ·³¢ÊÔ·Ö±ğÊäÈëSEAºÍDFW£¬Æ¬¿Ìºó½«»áÕ¹ÏÖº½°àÊ±¼äºÍ±¨¼Û£¬Ò²¿É³¢ÊÔÊäÈëÆäËûÆğÊ¼µØÖ·»òÄ¿µÄµØÖ·£¬±ÈÈçLAS»òSANµÈ¡£
+é€šè¿‡ [http://localhost:6080](http://localhost:6080) è®¿é—®åº”ç”¨å‰ç«¯ï¼Œåœ¨èµ·å§‹åœ°å€å’Œç›®çš„åœ°å€å°è¯•åˆ†åˆ«è¾“å…¥SEAå’ŒDFWï¼Œç‰‡åˆ»åå°†ä¼šå±•ç°èˆªç­æ—¶é—´å’ŒæŠ¥ä»·ï¼Œä¹Ÿå¯å°è¯•è¾“å…¥å…¶ä»–èµ·å§‹åœ°å€æˆ–ç›®çš„åœ°å€ï¼Œæ¯”å¦‚LASæˆ–SANç­‰ã€‚
 
-·ÃÎÊ [http://localhost:8761](http://localhost:8761) ²é¿´µ±Ç°ÒÑ¾­×¢²áµ½EurekaµÄÎ¢·şÎñÁĞ±í¡£
+è®¿é—® [http://localhost:8761](http://localhost:8761) æŸ¥çœ‹å½“å‰å·²ç»æ³¨å†Œåˆ°Eurekaçš„å¾®æœåŠ¡åˆ—è¡¨ã€‚
 
-·ÃÎÊ [http://localhost:9411](http://localhost:9411) ²é¿´Î¢·şÎñÁ´Â·¸ú×ÙºÍµ÷ÓÃÒÀÀµ¹ØÏµ¡£
+è®¿é—® [http://localhost:9411](http://localhost:9411) æŸ¥çœ‹å¾®æœåŠ¡é“¾è·¯è·Ÿè¸ªå’Œè°ƒç”¨ä¾èµ–å…³ç³»ã€‚
 
-# ½«ÏîÄ¿µ¼Èëµ½Eclipse
-
-ÏîÄ¿±¾ÉíÊÇÔÚEclipseÖĞ½øĞĞ¿ª·¢µ÷ÊÔ£¬Ê¹ÓÃIDEÒ²¸ü¼ÓÈİÒ×·ÖÎöºÍÑ§Ï°ÏîÄ¿¡£
-
-Æô¶¯Eclipse£¬¹¤×÷Ä¿Â¼Ñ¡ÔñLambdaAir»òLambdaAir-master£¬Eclipse½«»á³õÊ¼»¯¹¤×÷Ä¿Â¼£¬´ı³õÊ¼»¯Íê±Ïºó£¬½«ÆäÏÂµÄÁù¸ö×ÓÄ¿Â¼ÖğÒ»µ¼Èë£º
-
-````
-File > Import... > Maven > Existing Maven Projects 
-````
-Eclipse½«»á×Ô¶¯¹¹½¨²¢±àÒëÏîÄ¿£¬È»ºó´¦ÓÚ¾ÍĞ÷×´Ì¬¡£
-
-Êó±êÓÒ¼üµã»÷ÈÎÒâÒ»¸öÏîÄ¿£¬±ÈÈçEureka£¬Ñ¡ÔñÖ÷Ö´ĞĞÀà£º
-
-````
-Run As > Java Application > EurekaApplication - com.example
-````
-
-Ê¹ÓÃÈçÉÏ·½Ê½¿ÉÒÀ´ÎÆô¶¯ÆäËûÎ¢·şÎñ¡£
-
-# ÏîÄ¿µÄ¼òÒª½â¶Á
-
-## Eureka
-
-ĞèÒª×¢ÒâµÄµØ·½ÊÇpom.xml¡¢application.yamlºÍÖ÷Ö´ĞĞÀà
-
-pom.xmlµÄÉèÖÃ·Ç³£ÖØÒª£¬Ëü»áÒıÈëÏîÄ¿ĞèÒªµÄ¸÷ÖÖÒÀÀµÀà¿â£¬ÎÒÃÇÊ¹ÓÃµÄÊÇSpring Cloud Greenwich.SR5°æ±¾ÒÔ¼°Red Hat Spring Boot 2.1.6°æ±¾£¬JDKÔòÊÇ1.8°æ±¾£º
-
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<java.version>1.8</java.version>
-		<spring-cloud.version>Greenwich.SR5</spring-cloud.version>
-		
-		<spring-boot.version>2.1.6.RELEASE</spring-boot.version>
-    	<spring-boot-maven-plugin.version>2.1.6.RELEASE</spring-boot-maven-plugin.version>
-	</properties>
-
-ÒıÈëµÄÒÀÀµ¼°ÒÀÀµ¹ÜÀí£º
-
-````
-	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-actuator</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
-			<scope>runtime</scope>
-		</dependency>
-	</dependencies>
-
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>me.snowdrop</groupId>
-				<artifactId>spring-boot-bom</artifactId>
-				<version>2.1.6.SP3-redhat-00001</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework.cloud</groupId>
-				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>${spring-cloud.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
-````
-	
-ÔÚpom.xmlµÄÄ©Î²£¬Ìí¼ÓÁËRed HatµÄMaven²Ö¿â£¬ÕâÊÇÒòÎªÏîÄ¿ÖĞÓÃµ½ÁËRed Hat Spring BootÕâ¸ö¹Ù·½Ö§³ÖµÄÀà¿â£¬ºÍ´¿¿ªÔ´µÄÏà±È£¬ºìÃ±°æ±¾µÄSpring Boot²»½öÒ²ÍêÈ«¿ªÔ´£¬¶øÇÒ¸üÄÜ»ñµÃ¹Ù·½Ìá¹©µÄ¼¼ÊõÖ§³Ö£¬Ä¿Ç°ËüÊôÓÚRed Hat RuntimesÖĞµÄÒ»Ô±¡£
-
-    <repositories>
-        <repository>
-            <id>redhat-ga-repository</id>
-            <name>Redhat GA Repository</name>
-            <url>https://maven.repository.redhat.com/ga/all/</url>
-        </repository>
-    </repositories>
-    <pluginRepositories>
-        <pluginRepository>
-            <id>redhat-ga-repository</id>
-            <name>Redhat GA Repository</name>
-            <url>https://maven.repository.redhat.com/ga/all/</url>
-        </pluginRepository>
-    </pluginRepositories>
-
-application.yamlÎÄ¼şÎ»ÓÚsrc/main/resourcesÄ¿Â¼£¬ËüµÄÖ÷ÒªÄÚÈİ£º
-
-````
-spring:
-  application:
-    name: eureka
-
-server: 
-  port: 8761
-
-eureka: 
-  instance: 
-    hostname: localhost    
-  server:
-    response-cache-update-interval-ms: 500
-  client: 
-    register-with-eureka: false
-    fetch-registry: false
-    service-url:
-      default-zone: http://${eureka.instance.hostname}:${server.port}/eureka/
-````
-
-ÔÚÖ÷Ö´ĞĞÀàcom.example.EurekaApplication.javaÖĞ£¬Í¨¹ı×¢½â½«½«Ó¦ÓÃĞÔÖÊÉèÖÃÎªEureka Server£º
-
-````
-@SpringBootApplication
-@EnableEurekaServer
-public class EurekaApplication {
-
-	public static void main(String[] args) {
-		SpringApplication.run(EurekaApplication.class, args);
-	}
-}
-````
-
-ÕâÑù£¬Ò»¸öEurekaÎ¢·şÎñ¾Í¿ª·¢Íê±ÏÁË¡£
+# å¾®æœåŠ¡è¯´æ˜
 
 ## Airports
 
-Airports»á´ÓÒ»¸ö.csvÎÄ¼şÖĞ¼ÓÔØ»ú³¡ĞÅÏ¢ÒÔÌá¹©²éÑ¯·şÎñ£¬ËüµÄÖ÷Ö´ĞĞÀàAirportApplication.javaÄÚÈİÈçÏÂ£º
+Airportsä¼šä»ä¸€ä¸ª.csvæ–‡ä»¶ä¸­åŠ è½½æœºåœºä¿¡æ¯ä»¥æä¾›æŸ¥è¯¢æœåŠ¡ï¼Œå®ƒçš„ä¸»æ‰§è¡Œç±»AirportApplication.javaå†…å®¹å¦‚ä¸‹ï¼š
 
 ````
 @SpringBootApplication
@@ -249,22 +109,22 @@ public class AirportsApplication
 }
 ````
 
-ÔÚmodel°üÖĞ°üº¬ÁËAirport.javaÎÄ¼ş£¬Ö÷ÒªÎªÊı¾İÄ£ĞÍÀà£¬ÖØÒªµÄÊµÏÖÀàÔÚservice°üÖĞ¡£
+åœ¨modelåŒ…ä¸­åŒ…å«äº†Airport.javaæ–‡ä»¶ï¼Œä¸»è¦ä¸ºæ•°æ®æ¨¡å‹ç±»ï¼Œé‡è¦çš„å®ç°ç±»åœ¨serviceåŒ…ä¸­ã€‚
 
-ApplicationInitialization.javaÖ÷ÒªÊµÏÖ²éÑ¯Êı¾İµÄ¼ÓÔØ£»Controller.java¶ÔÍâÍ¨¹ıREST½Ó¿Ú±©Â¶·şÎñ£¬ÎªÁËÌá¹©Á´Â·µ÷ÓÃ·ÖÎö£¬ÔÚ·şÎñµ÷ÓÃÈë¿Ú´òÉÏÁËTag£»¶øAirportsService.javaÔòÊÇÖ÷ÒªµÄ´¦ÀíÂß¼­ËùÔÚ¡£
+ApplicationInitialization.javaä¸»è¦å®ç°æŸ¥è¯¢æ•°æ®çš„åŠ è½½ï¼›Controller.javaå¯¹å¤–é€šè¿‡RESTæ¥å£æš´éœ²æœåŠ¡ï¼Œä¸ºäº†æä¾›é“¾è·¯è°ƒç”¨åˆ†æï¼Œåœ¨æœåŠ¡è°ƒç”¨å…¥å£æ‰“ä¸Šäº†Tagï¼›è€ŒAirportsService.javaåˆ™æ˜¯ä¸»è¦çš„å¤„ç†é€»è¾‘æ‰€åœ¨ã€‚
 
 ## Flights/Sales
 
-ºÍAirportsÀàËÆ£¬²»Í¬µÄÊÇ£¬Flights»áµ÷ÓÃAirportsµÄ²éÑ¯·şÎñ¡£
+å’ŒAirportsç±»ä¼¼ï¼Œä¸åŒçš„æ˜¯ï¼ŒFlightsä¼šè°ƒç”¨Airportsçš„æŸ¥è¯¢æœåŠ¡ã€‚
 
 ## Presentation
 
-ÊÇ»ùÓÚjQueryµÄÒ»¸ö¼òµ¥Ó¦ÓÃÇ°¶Ë£¬Ò³Ãæ³ÊÏÖµÄÍ¬Ê±¼´»áÍ¨¹ıZuulÏòºó¶Ë·¢ËÍÇëÇó½øĞĞ»ú³¡ĞÅÏ¢µÄ³õÊ¼»¯£¬µ±ÔÚ²éÑ¯¿òÖĞÊäÈëÆğÊ¼»ú³¡¼°ÂÃĞĞÊ±¼ä£¬Ëü»áÒì²½µÄÏòºóÌ¨·¢ËÍ²éÑ¯ÇëÇó£¬ÇëÇóÒ²ÊÇÊ×ÏÈµ½Zuul£¬È»ºóÍ¨¹ıZuul·Ö·¢¸øÏàÓ¦µÄ·şÎñÌá¹©Õß¡£
+æ˜¯åŸºäºjQueryçš„ä¸€ä¸ªç®€å•åº”ç”¨å‰ç«¯ï¼Œé¡µé¢å‘ˆç°çš„åŒæ—¶å³ä¼šé€šè¿‡Zuulå‘åç«¯å‘é€è¯·æ±‚è¿›è¡Œæœºåœºä¿¡æ¯çš„åˆå§‹åŒ–ï¼Œå½“åœ¨æŸ¥è¯¢æ¡†ä¸­è¾“å…¥èµ·å§‹æœºåœºåŠæ—…è¡Œæ—¶é—´ï¼Œå®ƒä¼šå¼‚æ­¥çš„å‘åå°å‘é€æŸ¥è¯¢è¯·æ±‚ï¼Œè¯·æ±‚ä¹Ÿæ˜¯é¦–å…ˆåˆ°Zuulï¼Œç„¶åé€šè¿‡Zuulåˆ†å‘ç»™ç›¸åº”çš„æœåŠ¡æä¾›è€…ã€‚
 
 ## Zuul
 
-ZuulµÄ¹¹ÔìºÍEurekaÀàËÆ£¬×÷ÎªÎ¢·şÎñÍø¹Ø£¬ÊÇÇ°¶ËºÍºó¶ËµÄÇÅÁº£¬ÔÚÊµ¼ÊÓ¦ÓÃÖĞ£¬ËüµÄ¹¦ÄÜ»¹°üÀ¨Á÷¿Ø¡¢¼øÈ¨µÈ¡£
+Zuulçš„æ„é€ å’ŒEurekaç±»ä¼¼ï¼Œä½œä¸ºå¾®æœåŠ¡ç½‘å…³ï¼Œæ˜¯å‰ç«¯å’Œåç«¯çš„æ¡¥æ¢ï¼Œåœ¨å®é™…åº”ç”¨ä¸­ï¼Œå®ƒçš„åŠŸèƒ½è¿˜åŒ…æ‹¬æµæ§ã€é‰´æƒç­‰ã€‚
 
-## Î¢·şÎñÖ®¼äµÄµ÷ÓÃ·½Ê½
+## å¾®æœåŠ¡ä¹‹é—´çš„è°ƒç”¨æ–¹å¼
 
-ÔÚ±¾ÀıÖĞ£¬ËùÓĞ¶ÔÎ¢·şÎñµÄµ÷ÓÃ£¬ÔÚµ÷ÓÃÇ°¶¼Í¨¹ı²éÑ¯Eureka»ñµÃµØÖ·ĞÅÏ¢£¬±ÈÈçPresentation¶ÔZuulµÄµ÷ÓÃ£¬ÒÔ¼°ºó¶ËÎ¢·şÎñ¼äµÄ»¥Ïàµ÷ÓÃ¡£Í¨¹ırestTemplateµÄÊµÀı½øĞĞ¾ßÌåµÄµ÷ÓÃ·¢ËÍ¶¯×÷£¬¶ø¸ºÔØ¾ùºâÒÀÀµµÄÊÇRibbon£¬ÓÉÓÚ±¾ÀıÖĞÃ¿¸öÎ¢·şÎñ½ö½öÆôÓÃµ¥ÊµÀı£¬Òò´ËRibbonµÄ×÷ÓÃÎŞ·¨Ö±½ÓÌåÏÖ¡£Zuul¶ÔºóÌ¨Î¢·şÎñµÄµ÷ÓÃÒ²²ÉÓÃÁË´ÓEureka»ñµÃµØÖ·ĞÅÏ¢£¬²¢Í¨¹ıRibbon½øĞĞ¸ºÔØ¾ùºâµÄ·½Ê½£¬ÕâÊÇµäĞÍµÄÎ¢·şÎñÓ¦ÓÃ¼Ü¹¹¡£
+åœ¨æœ¬ä¾‹ä¸­ï¼Œæ‰€æœ‰å¯¹å¾®æœåŠ¡çš„è°ƒç”¨ï¼Œåœ¨è°ƒç”¨å‰éƒ½é€šè¿‡æŸ¥è¯¢Eurekaè·å¾—åœ°å€ä¿¡æ¯ï¼Œæ¯”å¦‚Presentationå¯¹Zuulçš„è°ƒç”¨ï¼Œä»¥åŠåç«¯å¾®æœåŠ¡é—´çš„äº’ç›¸è°ƒç”¨ã€‚é€šè¿‡restTemplateçš„å®ä¾‹è¿›è¡Œå…·ä½“çš„è°ƒç”¨å‘é€åŠ¨ä½œï¼Œè€Œè´Ÿè½½å‡è¡¡ä¾èµ–çš„æ˜¯Ribbonï¼Œç”±äºæœ¬ä¾‹ä¸­æ¯ä¸ªå¾®æœåŠ¡ä»…ä»…å¯ç”¨å•å®ä¾‹ï¼Œå› æ­¤Ribbonçš„ä½œç”¨æ— æ³•ç›´æ¥ä½“ç°ã€‚Zuulå¯¹åå°å¾®æœåŠ¡çš„è°ƒç”¨ä¹Ÿé‡‡ç”¨äº†ä»Eurekaè·å¾—åœ°å€ä¿¡æ¯ï¼Œå¹¶é€šè¿‡Ribbonè¿›è¡Œè´Ÿè½½å‡è¡¡çš„æ–¹å¼ï¼Œè¿™æ˜¯å…¸å‹çš„å¾®æœåŠ¡åº”ç”¨æ¶æ„ã€‚

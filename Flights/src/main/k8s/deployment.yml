@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flights
+  labels:
+    app: flights
+spec:
+  strategy:
+    type: RollingUpdate
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flights
+  template:
+    metadata:
+      labels:
+        app: flights
+    spec:
+      volumes:
+        - name: app-config
+          configMap:
+            name: 'flights-config'
+      containers:
+        - name: app
+          image: ccr.ccs.tencentyun.com/idcf-k8s-devops/sc-flights:v1
+          ports:
+            - name: http
+              containerPort: 8080
+          env:
+            - name: SPRING_CONFIG_LOCATION
+              value: /app/
+          volumeMounts:
+            - name: app-config
+              mountPath: /app/application.yml
+              subPath: application-k8s.yml
+          resources:
+            requests:
+              memory: 256Mi
+              cpu: 200m
+            limits:
+              memory: 768Mi
+              cpu: 500m
+          readinessProbe:
+            httpGet:
+              path: /actuator/info
+              port: 8081
+              scheme: HTTP
+            initialDelaySeconds: 10
+            periodSeconds: 3
+          livenessProbe:
+            httpGet:
+              path: /actuator/info
+              port: 8081
+              scheme: HTTP
+            initialDelaySeconds: 60
+            periodSeconds: 10

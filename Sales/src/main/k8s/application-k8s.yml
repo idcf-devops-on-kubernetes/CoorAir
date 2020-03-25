@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: sales
+  zipkin:
+    base-url: http://zipkin-svc/
+  sleuth:
+    sampler:
+      probability: 1.0
+
+server:
+  port: 8080
+management:
+  server:
+    port: 8081
+
+eureka:
+  instance:
+    hostname: localhost
+    prefer-ip-address: true
+  client:
+    service-url:
+      default-zone: http://eureka-svc/eureka/
