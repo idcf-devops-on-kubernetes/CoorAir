@@ -16,8 +16,9 @@ management:
   
 eureka:
   instance:
-    hostname: localhost
-    prefer-ip-address: true
+    preferIpAddress: true
   client:
-    service-url:
-      default-zone: http://eureka-svc/eureka/
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://eureka-svc/eureka/

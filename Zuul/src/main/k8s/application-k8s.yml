@@ -7,12 +7,12 @@ server:
 
 eureka:
   instance:
-    # 这里用服务所在的机器名注册到Eureka当中，但是如果prefer-ip-address为true，则会用IP地址注册
-    hostname: localhost
-    prefer-ip-address: true
+    preferIpAddress: true
   client:
-    service-url:
-      default-zone: http://eureka-svc/eureka/
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://eureka-svc/eureka/
 
 zuul:
   routes:

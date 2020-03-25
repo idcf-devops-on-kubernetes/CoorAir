@@ -21,7 +21,7 @@ spec:
           image: ccr.ccs.tencentyun.com/idcf-k8s-devops/sc-zipkin:v1
           ports:
             - name: http
-              containerPort: 9441
+              containerPort: 9411
           resources:
             requests:
               memory: 256Mi
@@ -32,14 +32,14 @@ spec:
           readinessProbe:
             httpGet:
               path: /
-              port: 9441
+              port: 9411
               scheme: HTTP
             initialDelaySeconds: 10
             periodSeconds: 3
           livenessProbe:
             httpGet:
               path: /
-              port: 9441
+              port: 9411
               scheme: HTTP
             initialDelaySeconds: 60
             periodSeconds: 10
@@ -54,7 +54,7 @@ spec:
   ports:
     - protocol: TCP
       port: 80
-      targetPort: 9441
+      targetPort: 9411
   type: ClusterIP
   selector:
     app: zipkin
